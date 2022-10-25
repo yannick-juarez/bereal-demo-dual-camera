@@ -14,6 +14,7 @@ struct FriendsView: View {
     @State var insertionEdge: Edge = .trailing
     @State var removalEdge: Edge = .trailing
     @State var segmentedSelection: Int = 0
+    @State var isSentSheetPresented: Bool = false
 
     var body: some View {
         VStack {
@@ -40,7 +41,7 @@ struct FriendsView: View {
                                 VStack(alignment: .leading, spacing: 8) {
                                     Text("ajouter tes contacts")
                                         .textCase(.uppercase)
-                                        .font(.callout.bold())
+                                        .font(.system(size: 14).bold())
                                         .foregroundColor(.secondary)
                                     LazyVStack {
                                         ForEach(0..<10) { index in
@@ -57,7 +58,7 @@ struct FriendsView: View {
                                 VStack(alignment: .leading, spacing: 8) {
                                     Text("mes amis (10)")
                                         .textCase(.uppercase)
-                                        .font(.callout.bold())
+                                        .font(.system(size: 14).bold())
                                         .foregroundColor(.secondary)
                                     LazyVStack {
                                         ForEach(0..<10) { index in
@@ -72,17 +73,43 @@ struct FriendsView: View {
                         } else if segmentedSelection == 2 {
                             VStack(alignment: .leading, spacing: 20) {
                                 ShareMyProfileView()
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text("invitations d'amis (0)")
-                                        .textCase(.uppercase)
-                                        .font(.callout.bold())
-                                        .foregroundColor(.secondary)
+                                VStack(alignment: .leading, spacing: 18) {
+                                    HStack {
+                                        Text("invitations d'amis (0)")
+                                            .textCase(.uppercase)
+                                            .font(.system(size: 14).bold())
+                                            .foregroundColor(.secondary)
+                                        Spacer()
+                                        Button {
+                                            isSentSheetPresented = true
+                                        } label: {
+                                            HStack(spacing: 2) {
+                                                Text("Envoyées")
+                                                    .font(.system(size: 14).bold())
+                                                    .textCase(.uppercase)
+                                                Image(systemName: "chevron.right")
+                                            }
+                                            .foregroundColor(.secondary)
+                                        }
 
-                                    VStack(alignment: .center) {
-                                        Text("Aucune invitation en attente")
-                                            .font(.body.bold())
-                                        Text("Tu n'as aucune invitation en attente")
-                                            .font(.callout)
+                                    }
+                                    HStack {
+                                        HStack {
+                                            Spacer()
+                                            VStack(alignment: .center, spacing: 8) {
+                                                Text("Aucune invitation en attente")
+                                                    .font(.body.bold())
+                                                Text("Tu n'as aucune invitation en attente")
+                                                    .font(.callout)
+                                            }
+                                            Spacer()
+                                        }
+                                        .padding()
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .foregroundColor(.secondary)
+                                                .opacity(0.25)
+                                        )
                                     }
                                 }
                             }
@@ -100,6 +127,9 @@ struct FriendsView: View {
                         }
                     }
                 }
+            }
+            .sheet(isPresented: $isSentSheetPresented) {
+                //
             }
         }
     }

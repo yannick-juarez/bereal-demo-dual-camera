@@ -25,8 +25,10 @@ struct Post: Identifiable, Hashable {
 
 struct PostView: View {
 
+    @State var offset: CGSize = CGSize.zero
     @State var post: Post
     @State var invertImages: Bool = false
+    @State var positionInverted: Bool = false
 
     func SecondaryView() -> some View {
         Image(invertImages ? post.primaryImageName : post.secondaryImageName)
@@ -54,7 +56,6 @@ struct PostView: View {
                 }
                 Spacer()
                 ZStack {
-
                     Menu {
                         Button {
                             //
@@ -99,24 +100,51 @@ struct PostView: View {
             .padding(.horizontal, 10)
             ZStack(alignment: .topLeading) {
                 Image(invertImages ? post.secondaryImageName : post.primaryImageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .cornerRadius(20)
-                if #available(iOS 15.0, *) {
-                    SecondaryView()
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(lineWidth: 2)
-                                .foregroundColor(.black)
-                        }
-                        .padding(12)
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 21)
-                            .foregroundColor(.black)
-                            .frame(width: 123, height: 153)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .cornerRadius(20)
+                GeometryReader { geometry in
+                    if #available(iOS 15.0, *) {
                         SecondaryView()
-                    }.padding(14)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(lineWidth: 2)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(12)
+                            .offset(x: offset.width, y: offset.height)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { gesture in
+                                        offset = gesture.translation
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation {
+                                            offset = .zero
+                                        }
+                                    }
+                            )
+                    } else {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 21)
+                                .foregroundColor(.black)
+                                .frame(width: 123, height: 153)
+                            SecondaryView()
+                        }
+                        .padding(14)
+                        .offset(x: offset.width, y: offset.height)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { gesture in
+                                    offset = gesture.translation
+                                }
+                                .onEnded { _ in
+                                    withAnimation {
+                                        offset = .zero
+                                    }
+                                }
+                        )
+                    }
                 }
             }
             NavigationLink(destination: Text("")) {

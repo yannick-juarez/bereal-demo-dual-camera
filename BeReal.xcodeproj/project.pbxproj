@@ -26,6 +26,7 @@
 		27A9A0322907CFEB00820367 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0312907CFEB00820367 /* FriendCell.swift */; };
 		27A9A0342907D02500820367 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0332907D02500820367 /* VisualEffectView.swift */; };
 		27A9A0362907D04A00820367 /* ShareMyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0352907D04A00820367 /* ShareMyProfileView.swift */; };
+		27A9A0382907D76600820367 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0372907D76600820367 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		27A9A0312907CFEB00820367 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		27A9A0332907D02500820367 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		27A9A0352907D04A00820367 /* ShareMyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMyProfileView.swift; sourceTree = "<group>"; };
+		27A9A0372907D76600820367 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				2751B7012904106A00FE552B /* LoadingMainView.swift */,
 				2751B703290410FF00FE552B /* MainView.swift */,
+				27A9A0372907D76600820367 /* ProfileView.swift */,
 				2751B7142904397200FE552B /* FriendsView.swift */,
 			);
 			path = Navigation;
@@ -228,6 +231,7 @@
 				2751B70E29041AE900FE552B /* AvatarView.swift in Sources */,
 				27A9A02C2907C38900820367 /* BackgroundProtectionView.swift in Sources */,
 				27A9A0362907D04A00820367 /* ShareMyProfileView.swift in Sources */,
+				27A9A0382907D76600820367 /* ProfileView.swift in Sources */,
 				27A9A0322907CFEB00820367 /* FriendCell.swift in Sources */,
 				27A9A02E2907CFD900820367 /* SearchField.swift in Sources */,
 				27A9A02A2907BF6000820367 /* SegmentedControlView.swift in Sources */,

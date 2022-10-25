@@ -12,6 +12,7 @@ struct MainView: View {
     @State var showExplorer: Bool = false
     @State var showMenu: Bool = true
     @State var showFriends: Bool = false
+    @State var showProfile: Bool = false
     @State var posts: [Post] = [
         Post(primaryImageName: "post2", secondaryImageName: "marie", profile: Profile(imageName: "marie", username: "mariecrossard"), timeLabel: "3 h Late"),
         Post(primaryImageName: "post1", secondaryImageName: "post1", profile: Profile(imageName: "yaya", username: "yannickjuarez"), timeLabel: "2 min Late"),
@@ -30,6 +31,13 @@ struct MainView: View {
             Text("BeReal.").font(.title.bold())
             Spacer()
             AvatarView(imageName: "yaya")
+                .onTapGesture {
+                    showProfile = true
+                }
+            NavigationLink(destination: ProfileView(showProfile: $showProfile), isActive: $showProfile) {
+                EmptyView()
+            }
+            .hidden()
         }
     }
 
@@ -63,7 +71,6 @@ struct MainView: View {
                                                value: -$0.frame(in: .named("scroll")).origin.y)
                     })
                     .onPreferenceChange(ViewOffsetKey.self) { offset in
-                        print(offset)
                         withAnimation(.linear(duration: 0.15)) {
                             showMenu = offset < 150
                         }
@@ -109,9 +116,10 @@ struct MainView: View {
                 FriendsView(showFriends: $showFriends)
                 .transition(.move(edge: .leading))
             } else {
-                NavigationView(content: {
+                NavigationView() {
                     PostsView()
-                })
+                }
+                .navigationBarHidden(true)
                 .ignoresSafeArea(.all)
                 .transition(.move(edge: .trailing))
             }
