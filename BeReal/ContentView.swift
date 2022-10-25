@@ -8,14 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State var loading: Bool = true
+    @State var showDebug: Bool = false
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            if loading {
+                LoadingMainView()
+            } else {
+                MainView()
+            }
         }
-        .padding()
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                withAnimation {
+                    loading = false
+                }
+            }
+        }
+        .onShake {
+            showDebug = true
+        }
+        .sheet(isPresented: $showDebug) {
+            NavigationView {
+                List {
+                    Section(header: Text("events")) {
+                        Button {
+                            //
+                        } label: {
+                            Text("simulate time to be real")
+                        }
+                    }
+                    Section(header: Text("navigation")) {
+                        Button {
+                            //
+                        } label: {
+                            Text("show camera")
+                        }
+                    }
+                }
+                .navigationTitle("debug")
+            }
+        }
     }
 }
 

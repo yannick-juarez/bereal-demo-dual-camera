@@ -11,6 +11,21 @@
 		2751B6F42904102800FE552B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B6F32904102800FE552B /* ContentView.swift */; };
 		2751B6F62904102A00FE552B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2751B6F52904102A00FE552B /* Assets.xcassets */; };
 		2751B6F92904102A00FE552B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2751B6F82904102A00FE552B /* Preview Assets.xcassets */; };
+		2751B7022904106A00FE552B /* LoadingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B7012904106A00FE552B /* LoadingMainView.swift */; };
+		2751B704290410FF00FE552B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B703290410FF00FE552B /* MainView.swift */; };
+		2751B70A29041AB800FE552B /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B70929041AB800FE552B /* PostView.swift */; };
+		2751B70E29041AE900FE552B /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B70D29041AE900FE552B /* AvatarView.swift */; };
+		2751B71029041D2C00FE552B /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B70F29041D2C00FE552B /* MyPostView.swift */; };
+		2751B712290427CE00FE552B /* ShakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B711290427CE00FE552B /* ShakeManager.swift */; };
+		2751B7152904397200FE552B /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B7142904397200FE552B /* FriendsView.swift */; };
+		27A9A0282907B3A800820367 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = 27A9A0272907B3A800820367 /* Focuser */; };
+		27A9A02A2907BF6000820367 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0292907BF6000820367 /* SegmentedControlView.swift */; };
+		27A9A02C2907C38900820367 /* BackgroundProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A02B2907C38900820367 /* BackgroundProtectionView.swift */; };
+		27A9A02E2907CFD900820367 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A02D2907CFD900820367 /* SearchField.swift */; };
+		27A9A0302907CFE300820367 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A02F2907CFE300820367 /* ContactCell.swift */; };
+		27A9A0322907CFEB00820367 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0312907CFEB00820367 /* FriendCell.swift */; };
+		27A9A0342907D02500820367 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0332907D02500820367 /* VisualEffectView.swift */; };
+		27A9A0362907D04A00820367 /* ShareMyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0352907D04A00820367 /* ShareMyProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +34,20 @@
 		2751B6F32904102800FE552B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2751B6F52904102A00FE552B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2751B6F82904102A00FE552B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2751B7012904106A00FE552B /* LoadingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingMainView.swift; sourceTree = "<group>"; };
+		2751B703290410FF00FE552B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		2751B70929041AB800FE552B /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		2751B70D29041AE900FE552B /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		2751B70F29041D2C00FE552B /* MyPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostView.swift; sourceTree = "<group>"; };
+		2751B711290427CE00FE552B /* ShakeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeManager.swift; sourceTree = "<group>"; };
+		2751B7142904397200FE552B /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		27A9A0292907BF6000820367 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		27A9A02B2907C38900820367 /* BackgroundProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundProtectionView.swift; sourceTree = "<group>"; };
+		27A9A02D2907CFD900820367 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		27A9A02F2907CFE300820367 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		27A9A0312907CFEB00820367 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		27A9A0332907D02500820367 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		27A9A0352907D04A00820367 /* ShareMyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMyProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A9A0282907B3A800820367 /* Focuser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +81,7 @@
 		2751B6F02904102800FE552B /* BeReal */ = {
 			isa = PBXGroup;
 			children = (
+				2751B6FF2904104A00FE552B /* MainApp */,
 				2751B6F12904102800FE552B /* BeRealApp.swift */,
 				2751B6F32904102800FE552B /* ContentView.swift */,
 				2751B6F52904102A00FE552B /* Assets.xcassets */,
@@ -65,6 +96,51 @@
 				2751B6F82904102A00FE552B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2751B6FF2904104A00FE552B /* MainApp */ = {
+			isa = PBXGroup;
+			children = (
+				2751B713290427D100FE552B /* Managers */,
+				2751B70829041AB200FE552B /* Views */,
+				2751B7002904105D00FE552B /* Navigation */,
+			);
+			path = MainApp;
+			sourceTree = "<group>";
+		};
+		2751B7002904105D00FE552B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				2751B7012904106A00FE552B /* LoadingMainView.swift */,
+				2751B703290410FF00FE552B /* MainView.swift */,
+				2751B7142904397200FE552B /* FriendsView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		2751B70829041AB200FE552B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2751B70929041AB800FE552B /* PostView.swift */,
+				2751B70D29041AE900FE552B /* AvatarView.swift */,
+				2751B70F29041D2C00FE552B /* MyPostView.swift */,
+				27A9A0332907D02500820367 /* VisualEffectView.swift */,
+				27A9A0292907BF6000820367 /* SegmentedControlView.swift */,
+				27A9A02B2907C38900820367 /* BackgroundProtectionView.swift */,
+				27A9A02D2907CFD900820367 /* SearchField.swift */,
+				27A9A02F2907CFE300820367 /* ContactCell.swift */,
+				27A9A0352907D04A00820367 /* ShareMyProfileView.swift */,
+				27A9A0312907CFEB00820367 /* FriendCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2751B713290427D100FE552B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2751B711290427CE00FE552B /* ShakeManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +159,9 @@
 			dependencies = (
 			);
 			name = BeReal;
+			packageProductDependencies = (
+				27A9A0272907B3A800820367 /* Focuser */,
+			);
 			productName = BeReal;
 			productReference = 2751B6EE2904102800FE552B /* BeReal.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +190,9 @@
 				Base,
 			);
 			mainGroup = 2751B6E52904102800FE552B;
+			packageReferences = (
+				27A9A0262907B3A800820367 /* XCRemoteSwiftPackageReference "swift-focuser" */,
+			);
 			productRefGroup = 2751B6EF2904102800FE552B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +220,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				2751B6F42904102800FE552B /* ContentView.swift in Sources */,
+				2751B712290427CE00FE552B /* ShakeManager.swift in Sources */,
+				2751B71029041D2C00FE552B /* MyPostView.swift in Sources */,
+				27A9A0302907CFE300820367 /* ContactCell.swift in Sources */,
+				2751B7152904397200FE552B /* FriendsView.swift in Sources */,
+				27A9A0342907D02500820367 /* VisualEffectView.swift in Sources */,
+				2751B70E29041AE900FE552B /* AvatarView.swift in Sources */,
+				27A9A02C2907C38900820367 /* BackgroundProtectionView.swift in Sources */,
+				27A9A0362907D04A00820367 /* ShareMyProfileView.swift in Sources */,
+				27A9A0322907CFEB00820367 /* FriendCell.swift in Sources */,
+				27A9A02E2907CFD900820367 /* SearchField.swift in Sources */,
+				27A9A02A2907BF6000820367 /* SegmentedControlView.swift in Sources */,
+				2751B704290410FF00FE552B /* MainView.swift in Sources */,
 				2751B6F22904102800FE552B /* BeRealApp.swift in Sources */,
+				2751B70A29041AB800FE552B /* PostView.swift in Sources */,
+				2751B7022904106A00FE552B /* LoadingMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +366,12 @@
 				DEVELOPMENT_TEAM = C6ATNQ6UYV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -282,9 +379,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaya.BeReal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -299,11 +399,12 @@
 				DEVELOPMENT_TEAM = C6ATNQ6UYV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +412,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yaya.BeReal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -339,6 +443,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27A9A0262907B3A800820367 /* XCRemoteSwiftPackageReference "swift-focuser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:art-technologies/swift-focuser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27A9A0272907B3A800820367 /* Focuser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27A9A0262907B3A800820367 /* XCRemoteSwiftPackageReference "swift-focuser" */;
+			productName = Focuser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2751B6E62904102800FE552B /* Project object */;
 }
