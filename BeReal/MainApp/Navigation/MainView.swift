@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
 
     @EnvironmentObject private var appSession: AppSession
+    let onOpenCamera: () -> Void
 
     @State var showExplorer: Bool = false
     @State var showMenu: Bool = true
@@ -43,7 +44,9 @@ struct MainView: View {
     @ViewBuilder
     func PostsView() -> some View {
         GeometryReader { geometry in
-            ZStack {
+            let bottomInset = max(geometry.safeAreaInsets.bottom, 16)
+
+            ZStack(alignment: .bottom) {
                 ScrollView {
                     VStack {
                         if showExplorer {
@@ -66,6 +69,7 @@ struct MainView: View {
                         }
                     }
                     .padding(.top, 76)
+                    .padding(.bottom, 110)
                     .background(GeometryReader {
                         Color.clear.preference(key: ViewOffsetKey.self,
                                                value: -$0.frame(in: .named("scroll")).origin.y)
@@ -106,6 +110,22 @@ struct MainView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
+
+                Button(action: onOpenCamera) {
+                    Image(systemName: "camera.fill")
+                        .font(.headline.bold())
+                        .foregroundColor(.black)
+                        .padding(12)
+                        .background(
+                            Capsule()
+                                .fill(Color.white.opacity(0.92))
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(Color.black.opacity(0.12), lineWidth: 1)
+                        )
+                        .shadow(color: Color.white.opacity(0.22), radius: 20, y: 10)
+                }
             }
             .frame(maxWidth: .infinity)
         }
@@ -137,7 +157,8 @@ struct ViewOffsetKey: PreferenceKey {
 }
 
 #Preview {
-    MainView()
+    MainView {
+    }
         .environmentObject(AppSession())
         .preferredColorScheme(.dark)
 }

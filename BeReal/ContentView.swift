@@ -8,15 +8,12 @@
 import SwiftUI
 
 private enum ActiveAlert: Identifiable {
-    case debugShortcut
     case timeToBeReal
 
     var id: Int {
         switch self {
-        case .debugShortcut:
-            return 0
         case .timeToBeReal:
-            return 1
+            return 0
         }
     }
 }
@@ -34,8 +31,10 @@ struct ContentView: View {
             if loading {
                 LoadingMainView()
             } else {
-                MainView()
-                    .environmentObject(appSession)
+                MainView {
+                    showCamera = true
+                }
+                .environmentObject(appSession)
             }
         }
         .onAppear {
@@ -43,7 +42,6 @@ struct ContentView: View {
                 withAnimation {
                     loading = false
                 }
-                activeAlert = .debugShortcut
             }
         }
         .onShake {
@@ -57,10 +55,6 @@ struct ContentView: View {
         }
         .alert(item: $activeAlert) { alert in
             switch alert {
-            case .debugShortcut:
-                return Alert(title: Text("Debug shortcut"),
-                             message: Text("Shake to open debug / camera"),
-                             dismissButton: .cancel())
             case .timeToBeReal:
                 return Alert(title: Text("Time to BeReal."),
                              message: Text("Le debug simule le moment BeReal. Tu peux ouvrir la camera immediatement."),
