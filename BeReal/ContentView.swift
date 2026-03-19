@@ -11,6 +11,7 @@ struct ContentView: View {
 
     @State var loading: Bool = true
     @State var showDebug: Bool = false
+    @State var showCamera: Bool = false
 
     var body: some View {
         VStack {
@@ -30,6 +31,12 @@ struct ContentView: View {
         .onShake {
             showDebug = true
         }
+        .fullScreenCover(isPresented: $showCamera) {
+            BeRealView()
+                .padding(.bottom, 30)
+                .background(Color("Black"))
+                .ignoresSafeArea(.all)
+        }
         .sheet(isPresented: $showDebug) {
             NavigationView {
                 List {
@@ -42,7 +49,8 @@ struct ContentView: View {
                     }
                     Section(header: Text("navigation")) {
                         Button {
-                            //
+                            showDebug = false
+                            showCamera = true
                         } label: {
                             Text("show camera")
                         }

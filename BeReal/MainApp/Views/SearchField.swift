@@ -24,11 +24,12 @@ struct SearchField: View {
         HStack {
             HStack {
                 Image(systemName: "magnifyingglass")
+                    .foregroundColor(.secondary)
                 TextField("Ajouter ou rechercher des amis", text: $text)
                     .focusedLegacy($focusState, equals: .searching)
             }
             .padding(.horizontal, 6)
-            .padding(.vertical)
+            .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundColor(Color(UIColor.secondarySystemBackground))

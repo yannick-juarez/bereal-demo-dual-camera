@@ -25,23 +25,9 @@ struct Post: Identifiable, Hashable {
 
 struct PostView: View {
 
-    @State var offset: CGSize = CGSize.zero
     @State var post: Post
     @State var invertImages: Bool = false
     @State var positionInverted: Bool = false
-
-    func SecondaryView() -> some View {
-        Image(invertImages ? post.primaryImageName : post.secondaryImageName)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 120, height: 150)
-            .cornerRadius(20)
-            .onTapGesture {
-                withAnimation {
-                    invertImages.toggle()
-                }
-            }
-    }
 
     var body: some View {
         VStack(spacing: 6) {
@@ -98,55 +84,8 @@ struct PostView: View {
                 }
             }
             .padding(.horizontal, 10)
-            ZStack(alignment: .topLeading) {
-                Image(invertImages ? post.secondaryImageName : post.primaryImageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .cornerRadius(20)
-                GeometryReader { geometry in
-                    if #available(iOS 15.0, *) {
-                        SecondaryView()
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(lineWidth: 2)
-                                    .foregroundColor(.black)
-                            }
-                            .padding(12)
-                            .offset(x: offset.width, y: offset.height)
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { gesture in
-                                        offset = gesture.translation
-                                    }
-                                    .onEnded { _ in
-                                        withAnimation {
-                                            offset = .zero
-                                        }
-                                    }
-                            )
-                    } else {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 21)
-                                .foregroundColor(.black)
-                                .frame(width: 123, height: 153)
-                            SecondaryView()
-                        }
-                        .padding(14)
-                        .offset(x: offset.width, y: offset.height)
-                        .gesture(
-                            DragGesture()
-                                .onChanged { gesture in
-                                    offset = gesture.translation
-                                }
-                                .onEnded { _ in
-                                    withAnimation {
-                                        offset = .zero
-                                    }
-                                }
-                        )
-                    }
-                }
-            }
+            DualPictureView(primaryImage: UIImage(named: post.primaryImageName)!,
+                            secondaryImage: UIImage(named: post.secondaryImageName)!)
             NavigationLink(destination: Text("")) {
                 HStack {
                     Text("Ajouter un commentaire…")

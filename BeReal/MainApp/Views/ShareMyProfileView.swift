@@ -10,7 +10,7 @@ import SwiftUI
 struct ShareMyProfileView: View {
     var body: some View {
         HStack {
-            AvatarView(imageName: "yaya", size: 40)
+            AvatarView(imageName: "yaya", size: 35)
             VStack(alignment: .leading) {
                 Text("Invite tes amis sur BeReal")
                     .font(.body.bold())

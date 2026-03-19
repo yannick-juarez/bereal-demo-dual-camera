@@ -48,6 +48,7 @@ struct FriendsView: View {
                                             ContactCell()
                                         }
                                     }
+                                    Spacer()
                                 }
                             }
                             .padding()
@@ -65,6 +66,7 @@ struct FriendsView: View {
                                             FriendCell()
                                         }
                                     }
+                                    Spacer()
                                 }
                             }
                             .padding()

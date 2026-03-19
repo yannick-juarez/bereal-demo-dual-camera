@@ -27,6 +27,14 @@
 		27A9A0342907D02500820367 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0332907D02500820367 /* VisualEffectView.swift */; };
 		27A9A0362907D04A00820367 /* ShareMyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0352907D04A00820367 /* ShareMyProfileView.swift */; };
 		27A9A0382907D76600820367 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0372907D76600820367 /* ProfileView.swift */; };
+		27A9A0402907E4B600820367 /* PiPVideoMixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03A2907E4B600820367 /* PiPVideoMixer.swift */; };
+		27A9A0412907E4B600820367 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03B2907E4B600820367 /* CameraViewController.swift */; };
+		27A9A0422907E4B600820367 /* PiPMixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03C2907E4B600820367 /* PiPMixer.metal */; };
+		27A9A0432907E4B600820367 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03D2907E4B600820367 /* PreviewView.swift */; };
+		27A9A0442907E4B600820367 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03E2907E4B600820367 /* Utilities.swift */; };
+		27A9A0452907E4B600820367 /* MovieRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03F2907E4B600820367 /* MovieRecorder.swift */; };
+		27A9A0472907F03500820367 /* BeRealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0462907F03500820367 /* BeRealView.swift */; };
+		27A9A04929080EF800820367 /* DualPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A04829080EF800820367 /* DualPictureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +58,14 @@
 		27A9A0332907D02500820367 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		27A9A0352907D04A00820367 /* ShareMyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMyProfileView.swift; sourceTree = "<group>"; };
 		27A9A0372907D76600820367 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		27A9A03A2907E4B600820367 /* PiPVideoMixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiPVideoMixer.swift; sourceTree = "<group>"; };
+		27A9A03B2907E4B600820367 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		27A9A03C2907E4B600820367 /* PiPMixer.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PiPMixer.metal; sourceTree = "<group>"; };
+		27A9A03D2907E4B600820367 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		27A9A03E2907E4B600820367 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		27A9A03F2907E4B600820367 /* MovieRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRecorder.swift; sourceTree = "<group>"; };
+		27A9A0462907F03500820367 /* BeRealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeRealView.swift; sourceTree = "<group>"; };
+		27A9A04829080EF800820367 /* DualPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualPictureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +119,7 @@
 		2751B6FF2904104A00FE552B /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				27A9A0392907E4A800820367 /* CameraManager */,
 				2751B713290427D100FE552B /* Managers */,
 				2751B70829041AB200FE552B /* Views */,
 				2751B7002904105D00FE552B /* Navigation */,
@@ -117,6 +134,7 @@
 				2751B703290410FF00FE552B /* MainView.swift */,
 				27A9A0372907D76600820367 /* ProfileView.swift */,
 				2751B7142904397200FE552B /* FriendsView.swift */,
+				27A9A0462907F03500820367 /* BeRealView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -125,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				2751B70929041AB800FE552B /* PostView.swift */,
+				27A9A04829080EF800820367 /* DualPictureView.swift */,
 				2751B70D29041AE900FE552B /* AvatarView.swift */,
 				2751B70F29041D2C00FE552B /* MyPostView.swift */,
 				27A9A0332907D02500820367 /* VisualEffectView.swift */,
@@ -144,6 +163,19 @@
 				2751B711290427CE00FE552B /* ShakeManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		27A9A0392907E4A800820367 /* CameraManager */ = {
+			isa = PBXGroup;
+			children = (
+				27A9A03B2907E4B600820367 /* CameraViewController.swift */,
+				27A9A03F2907E4B600820367 /* MovieRecorder.swift */,
+				27A9A03C2907E4B600820367 /* PiPMixer.metal */,
+				27A9A03A2907E4B600820367 /* PiPVideoMixer.swift */,
+				27A9A03D2907E4B600820367 /* PreviewView.swift */,
+				27A9A03E2907E4B600820367 /* Utilities.swift */,
+			);
+			path = CameraManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +256,10 @@
 			files = (
 				2751B6F42904102800FE552B /* ContentView.swift in Sources */,
 				2751B712290427CE00FE552B /* ShakeManager.swift in Sources */,
+				27A9A0442907E4B600820367 /* Utilities.swift in Sources */,
+				27A9A0432907E4B600820367 /* PreviewView.swift in Sources */,
 				2751B71029041D2C00FE552B /* MyPostView.swift in Sources */,
+				27A9A0402907E4B600820367 /* PiPVideoMixer.swift in Sources */,
 				27A9A0302907CFE300820367 /* ContactCell.swift in Sources */,
 				2751B7152904397200FE552B /* FriendsView.swift in Sources */,
 				27A9A0342907D02500820367 /* VisualEffectView.swift in Sources */,
@@ -234,9 +269,14 @@
 				27A9A0382907D76600820367 /* ProfileView.swift in Sources */,
 				27A9A0322907CFEB00820367 /* FriendCell.swift in Sources */,
 				27A9A02E2907CFD900820367 /* SearchField.swift in Sources */,
+				27A9A0422907E4B600820367 /* PiPMixer.metal in Sources */,
 				27A9A02A2907BF6000820367 /* SegmentedControlView.swift in Sources */,
+				27A9A0472907F03500820367 /* BeRealView.swift in Sources */,
+				27A9A0452907E4B600820367 /* MovieRecorder.swift in Sources */,
 				2751B704290410FF00FE552B /* MainView.swift in Sources */,
+				27A9A04929080EF800820367 /* DualPictureView.swift in Sources */,
 				2751B6F22904102800FE552B /* BeRealApp.swift in Sources */,
+				27A9A0412907E4B600820367 /* CameraViewController.swift in Sources */,
 				2751B70A29041AB800FE552B /* PostView.swift in Sources */,
 				2751B7022904106A00FE552B /* LoadingMainView.swift in Sources */,
 			);
@@ -371,6 +411,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Pour prendre des BeReal";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Prendre des BeReal avec du son";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -404,6 +446,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Pour prendre des BeReal";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Prendre des BeReal avec du son";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

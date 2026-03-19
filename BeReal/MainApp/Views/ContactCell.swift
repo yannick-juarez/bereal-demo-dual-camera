@@ -20,7 +20,7 @@ struct ContactCell: View {
                 )
             VStack(alignment: .leading) {
                 Text("John Appleseed")
-                    .fontWeight(.bold)
+                    .font(.callout.bold())
                 VStack(alignment: .leading) {
                     Text("applejohn")
                     HStack(spacing: 4) {
@@ -28,7 +28,7 @@ struct ContactCell: View {
                         Text("John")
                     }
                 }
-                .font(.callout)
+                .font(.system(size: 15, weight: .medium))
                 .foregroundColor(.secondary)
             }
             Spacer()
@@ -37,7 +37,7 @@ struct ContactCell: View {
                     //
                 } label: {
                     Text("ajouter")
-                        .font(.system(size: 14, weight: .heavy))
+                        .font(.system(size: 12, weight: .heavy))
                         .textCase(.uppercase)
                         .foregroundColor(.primary)
                         .padding(.vertical, 8)
@@ -57,7 +57,7 @@ struct ContactCell: View {
                 }
             }
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 4)
     }
 }
 
