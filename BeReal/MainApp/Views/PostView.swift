@@ -7,27 +7,9 @@
 
 import SwiftUI
 
-struct Profile: Hashable {
-    var imageName: String
-    var username: String
-}
-
-struct Post: Identifiable, Hashable {
-
-    var id: UUID = UUID()
-
-    var primaryImageName: String
-    var secondaryImageName: String
-
-    var profile: Profile
-    var timeLabel: String
-}
-
 struct PostView: View {
 
     @State var post: Post
-    @State var invertImages: Bool = false
-    @State var positionInverted: Bool = false
 
     var body: some View {
         VStack(spacing: 6) {

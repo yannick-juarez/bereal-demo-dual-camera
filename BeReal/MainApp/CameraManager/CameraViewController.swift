@@ -199,25 +199,25 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 	
 	private lazy var frontCameraPiPConstraints: [NSLayoutConstraint] = [
         frontCameraVideoPreviewView.leadingAnchor.constraint(equalTo: backCameraVideoPreviewView.leadingAnchor, constant: 20.0),
-        frontCameraVideoPreviewView.topAnchor.constraint(equalTo: backCameraVideoPreviewView.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+	frontCameraVideoPreviewView.topAnchor.constraint(equalTo: backCameraVideoPreviewView.topAnchor, constant: 20.0),
         frontCameraVideoPreviewView.widthAnchor.constraint(equalToConstant: 140),
         frontCameraVideoPreviewView.heightAnchor.constraint(equalToConstant: 190),
-        backCameraVideoPreviewView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+	backCameraVideoPreviewView.topAnchor.constraint(equalTo: view.topAnchor),
         backCameraVideoPreviewView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         backCameraVideoPreviewView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        backCameraVideoPreviewView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+	backCameraVideoPreviewView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
     ]
 	
 	private lazy var backCameraPiPConstraints: [NSLayoutConstraint] = [
         backCameraVideoPreviewView.leadingAnchor.constraint(equalTo: frontCameraVideoPreviewView.leadingAnchor, constant: 20.0),
-        backCameraVideoPreviewView.topAnchor.constraint(equalTo: frontCameraVideoPreviewView.safeAreaLayoutGuide.topAnchor, constant: 20.0),
+		backCameraVideoPreviewView.topAnchor.constraint(equalTo: frontCameraVideoPreviewView.topAnchor, constant: 20.0),
         backCameraVideoPreviewView.widthAnchor.constraint(equalToConstant: 140),
         backCameraVideoPreviewView.heightAnchor.constraint(equalToConstant: 190),
 
-        frontCameraVideoPreviewView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+		frontCameraVideoPreviewView.topAnchor.constraint(equalTo: view.topAnchor),
         frontCameraVideoPreviewView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         frontCameraVideoPreviewView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        frontCameraVideoPreviewView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+		frontCameraVideoPreviewView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
     ]
 	
 	@objc // Expose to Objective-C for use with #selector()

@@ -7,11 +7,27 @@
 
 import SwiftUI
 
+private enum ActiveAlert: Identifiable {
+    case debugShortcut
+    case timeToBeReal
+
+    var id: Int {
+        switch self {
+        case .debugShortcut:
+            return 0
+        case .timeToBeReal:
+            return 1
+        }
+    }
+}
+
 struct ContentView: View {
 
-    @State var loading: Bool = true
-    @State var showDebug: Bool = false
-    @State var showCamera: Bool = false
+    @StateObject private var appSession = AppSession()
+    @State private var loading: Bool = true
+    @State private var showDebug: Bool = false
+    @State private var showCamera: Bool = false
+    @State private var activeAlert: ActiveAlert?
 
     var body: some View {
         VStack {
@@ -19,6 +35,7 @@ struct ContentView: View {
                 LoadingMainView()
             } else {
                 MainView()
+                    .environmentObject(appSession)
             }
         }
         .onAppear {
@@ -26,23 +43,42 @@ struct ContentView: View {
                 withAnimation {
                     loading = false
                 }
+                activeAlert = .debugShortcut
             }
         }
         .onShake {
             showDebug = true
         }
         .fullScreenCover(isPresented: $showCamera) {
-            BeRealView()
-                .padding(.bottom, 30)
+            BeRealView { frontImage, backImage in
+                appSession.publish(frontImage: frontImage, backImage: backImage)
+            }
                 .background(Color("Black"))
-                .ignoresSafeArea(.all)
+        }
+        .alert(item: $activeAlert) { alert in
+            switch alert {
+            case .debugShortcut:
+                return Alert(title: Text("Debug shortcut"),
+                             message: Text("Shake to open debug / camera"),
+                             dismissButton: .cancel())
+            case .timeToBeReal:
+                return Alert(title: Text("Time to BeReal."),
+                             message: Text("Le debug simule le moment BeReal. Tu peux ouvrir la camera immediatement."),
+                             primaryButton: .default(Text("Ouvrir la camera")) {
+                                 showCamera = true
+                             },
+                             secondaryButton: .cancel())
+            }
         }
         .sheet(isPresented: $showDebug) {
             NavigationView {
                 List {
                     Section(header: Text("events")) {
                         Button {
-                            //
+                            showDebug = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                activeAlert = .timeToBeReal
+                            }
                         } label: {
                             Text("simulate time to be real")
                         }

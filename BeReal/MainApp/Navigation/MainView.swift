@@ -9,16 +9,15 @@ import SwiftUI
 
 struct MainView: View {
 
+    @EnvironmentObject private var appSession: AppSession
+
     @State var showExplorer: Bool = false
     @State var showMenu: Bool = true
     @State var showFriends: Bool = false
     @State var showProfile: Bool = false
-    @State var posts: [Post] = [
-        Post(primaryImageName: "post2", secondaryImageName: "marie", profile: Profile(imageName: "marie", username: "mariecrossard"), timeLabel: "3 h Late"),
-        Post(primaryImageName: "post1", secondaryImageName: "post1", profile: Profile(imageName: "yaya", username: "yannickjuarez"), timeLabel: "2 min Late"),
-        Post(primaryImageName: "marty1", secondaryImageName: "marty", profile: Profile(imageName: "marty", username: "lmart1n"), timeLabel: "Hier 21:45:03"),
-    ]
+    private let posts: [Post] = FeedMockService.friendsPosts
 
+    @ViewBuilder
     func HeaderView() -> some View {
         HStack {
             Image(systemName: "person.2.fill")
@@ -41,6 +40,7 @@ struct MainView: View {
         }
     }
 
+    @ViewBuilder
     func PostsView() -> some View {
         GeometryReader { geometry in
             ZStack {
@@ -53,7 +53,7 @@ struct MainView: View {
                             .transition(.move(edge: .trailing))
                         } else {
                             VStack(spacing: 20) {
-                                MyPostView()
+                                MyPostView(post: appSession.myPost)
                                 ForEach(posts, id: \.self) { post in
                                     PostView(post: post)
                                 }
@@ -81,6 +81,7 @@ struct MainView: View {
                     HeaderView()
                     if showMenu {
                         HStack(spacing: 20) {
+                            
                             Button {
                                 withAnimation {
                                     showExplorer = false
@@ -135,9 +136,8 @@ struct ViewOffsetKey: PreferenceKey {
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    MainView()
+        .environmentObject(AppSession())
+        .preferredColorScheme(.dark)
 }

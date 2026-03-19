@@ -11,6 +11,7 @@ struct DualPictureView: View {
 
     @State var primaryImage: UIImage
     @State var secondaryImage: UIImage
+    var fillsContainer: Bool = false
     @State var invertImages: Bool = false
     @State var offset: CGSize = CGSize.zero
 
@@ -35,43 +36,22 @@ struct DualPictureView: View {
         invertImages ? secondaryImage : primaryImage
     }
 
-    var body: some View {
+    @ViewBuilder
+    private func pictureContent(in size: CGSize) -> some View {
         ZStack(alignment: .topLeading) {
             Image(uiImage: PrimaryImage())
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 1.4)
-                .aspectRatio(contentMode: .fill)
-                .cornerRadius(20)
-            GeometryReader { geometry in
-                if #available(iOS 15.0, *) {
-                    SecondaryView()
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(lineWidth: 2)
-                                .foregroundColor(.black)
-                        }
-                        .padding(12)
-                        .offset(x: offset.width, y: offset.height)
-                        .gesture(
-                            DragGesture()
-                                .onChanged { gesture in
-                                    offset = gesture.translation
-                                }
-                                .onEnded { _ in
-                                    withAnimation {
-                                        offset = .zero
-                                    }
-                                }
-                        )
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 21)
+                .frame(width: size.width, height: size.height)
+
+            if #available(iOS 15.0, *) {
+                SecondaryView()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(lineWidth: 2)
                             .foregroundColor(.black)
-                            .frame(width: 123, height: 153)
-                        SecondaryView()
                     }
-                    .padding(14)
+                    .padding(12)
                     .offset(x: offset.width, y: offset.height)
                     .gesture(
                         DragGesture()
@@ -84,7 +64,43 @@ struct DualPictureView: View {
                                 }
                             }
                     )
+            } else {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 21)
+                        .foregroundColor(.black)
+                        .frame(width: 123, height: 153)
+                    SecondaryView()
                 }
+                .padding(14)
+                .offset(x: offset.width, y: offset.height)
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            offset = gesture.translation
+                        }
+                        .onEnded { _ in
+                            withAnimation {
+                                offset = .zero
+                            }
+                        }
+                )
+            }
+        }
+        .frame(width: size.width, height: size.height, alignment: .topLeading)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+
+    var body: some View {
+        Group {
+            if fillsContainer {
+                GeometryReader { geometry in
+                    pictureContent(in: geometry.size)
+                }
+            } else {
+                GeometryReader { geometry in
+                    pictureContent(in: geometry.size)
+                }
+                .aspectRatio(1 / 1.4, contentMode: .fit)
             }
         }
     }

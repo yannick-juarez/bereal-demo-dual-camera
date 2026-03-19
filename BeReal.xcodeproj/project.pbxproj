@@ -35,6 +35,11 @@
 		27A9A0452907E4B600820367 /* MovieRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03F2907E4B600820367 /* MovieRecorder.swift */; };
 		27A9A0472907F03500820367 /* BeRealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0462907F03500820367 /* BeRealView.swift */; };
 		27A9A04929080EF800820367 /* DualPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A04829080EF800820367 /* DualPictureView.swift */; };
+		30B0A0013A1C100000000001 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1013A1C100000000001 /* AppSession.swift */; };
+		30B0A0023A1C100000000001 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1023A1C100000000001 /* Post.swift */; };
+		30B0A0033A1C100000000001 /* FeedMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1033A1C100000000001 /* FeedMockService.swift */; };
+		30B0A0043A1C100000000001 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1043A1C100000000001 /* CameraView.swift */; };
+		30B0A0053A1C100000000001 /* ImageFaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1053A1C100000000001 /* ImageFaceDetection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +71,11 @@
 		27A9A03F2907E4B600820367 /* MovieRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRecorder.swift; sourceTree = "<group>"; };
 		27A9A0462907F03500820367 /* BeRealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeRealView.swift; sourceTree = "<group>"; };
 		27A9A04829080EF800820367 /* DualPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualPictureView.swift; sourceTree = "<group>"; };
+		30B0A1013A1C100000000001 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
+		30B0A1023A1C100000000001 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		30B0A1033A1C100000000001 /* FeedMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMockService.swift; sourceTree = "<group>"; };
+		30B0A1043A1C100000000001 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		30B0A1053A1C100000000001 /* ImageFaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFaceDetection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +109,12 @@
 		2751B6F02904102800FE552B /* BeReal */ = {
 			isa = PBXGroup;
 			children = (
-				2751B6FF2904104A00FE552B /* MainApp */,
 				2751B6F12904102800FE552B /* BeRealApp.swift */,
 				2751B6F32904102800FE552B /* ContentView.swift */,
+				30B0A2013A1C100000000001 /* App */,
+				30B0A2023A1C100000000001 /* Core */,
+				30B0A2053A1C100000000001 /* Features */,
+				2751B6FF2904104A00FE552B /* MainApp */,
 				2751B6F52904102A00FE552B /* Assets.xcassets */,
 				2751B6F72904102A00FE552B /* Preview Content */,
 			);
@@ -176,6 +189,56 @@
 				27A9A03E2907E4B600820367 /* Utilities.swift */,
 			);
 			path = CameraManager;
+			sourceTree = "<group>";
+		};
+		30B0A2013A1C100000000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				30B0A1013A1C100000000001 /* AppSession.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		30B0A2023A1C100000000001 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				30B0A2033A1C100000000001 /* Models */,
+				30B0A2043A1C100000000001 /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		30B0A2033A1C100000000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30B0A1023A1C100000000001 /* Post.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		30B0A2043A1C100000000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				30B0A1033A1C100000000001 /* FeedMockService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		30B0A2053A1C100000000001 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				30B0A2063A1C100000000001 /* Camera */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		30B0A2063A1C100000000001 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				30B0A1043A1C100000000001 /* CameraView.swift */,
+				30B0A1053A1C100000000001 /* ImageFaceDetection.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,8 +317,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B0A0013A1C100000000001 /* AppSession.swift in Sources */,
 				2751B6F42904102800FE552B /* ContentView.swift in Sources */,
+				30B0A0043A1C100000000001 /* CameraView.swift in Sources */,
+				30B0A0033A1C100000000001 /* FeedMockService.swift in Sources */,
+				30B0A0053A1C100000000001 /* ImageFaceDetection.swift in Sources */,
 				2751B712290427CE00FE552B /* ShakeManager.swift in Sources */,
+				30B0A0023A1C100000000001 /* Post.swift in Sources */,
 				27A9A0442907E4B600820367 /* Utilities.swift in Sources */,
 				27A9A0432907E4B600820367 /* PreviewView.swift in Sources */,
 				2751B71029041D2C00FE552B /* MyPostView.swift in Sources */,
@@ -417,7 +485,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +520,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

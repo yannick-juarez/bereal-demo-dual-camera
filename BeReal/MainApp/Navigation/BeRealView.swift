@@ -7,127 +7,206 @@
 
 import SwiftUI
 
-struct CameraView: UIViewControllerRepresentable {
-    typealias UIViewControllerType = CameraViewController
-
-    let viewController = CameraViewController()
-
-    func makeUIViewController(context: Context) -> CameraViewController {
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: CameraViewController, context: Context) {
-        // Update CameraViewController
-    }
-
-    func toggleCamera() {
-        viewController.togglePiP()
-    }
-
-    func capture(_ completion: @escaping (UIImage, UIImage) -> Void) {
-        viewController.capture(completion)
-    }
-}
-
 struct BeRealView: View {
+
+    private enum UploadState {
+        case idle
+        case uploading
+    }
+
+    @Environment(\.presentationMode) private var presentationMode
+    let onSend: (UIImage, UIImage) -> Void
 
     @State var countDown: Int = 89
     @State var cameraView = CameraView()
     @State var captured: Bool = false
+    @State private var uploadState: UploadState = .idle
+    @State private var showDiscardAlert: Bool = false
+    @State private var showSendConfirmation: Bool = false
 
     @State var frontCapturedImage: UIImage?
     @State var backCaptureImage: UIImage?
 
-    @State var isThereSmile: Bool = false
-    @State var isThereFace: Bool = false
-    @State var isRightEyeClosed: Bool = false
-    @State var isLeftEyeClosed: Bool = false
+    @State private var faceInsights: FaceInsights = .empty
 
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
+    init(onSend: @escaping (UIImage, UIImage) -> Void = { _, _ in }) {
+        self.onSend = onSend
+    }
+
     var body: some View {
-        VStack {
-            VStack(spacing: 12) {
-                Text("BeReal.").font(.title.bold())
-                Text("\(Int(countDown / 60)):\(countDown % 60 < 10 ? "0" : "")\(Int(countDown % 60))")
-                    .font(.title.bold())
-            }
-            .padding(.top)
-            if captured, let front = frontCapturedImage, let back = backCaptureImage {
+        GeometryReader { geometry in
+            let topInset = geometry.safeAreaInsets.top
+            let bottomInset = geometry.safeAreaInsets.bottom
+            let safeAreaHeight = max(geometry.size.height - topInset - bottomInset, 0)
+            let headerHeight: CGFloat = 84
+            let previewHeight = min(geometry.size.width * 1.4, max(safeAreaHeight - 220, 260))
+
+            VStack(spacing: 16) {
                 ZStack {
-                    DualPictureView(primaryImage: back, secondaryImage: front)
-                    if isThereFace {
-                        if isThereSmile {
-                            Text("+1 pour le sourire")
-                                .font(.title.bold())
-                                .foregroundColor(.white)
-                        } else {
-                            if isRightEyeClosed && isLeftEyeClosed {
-                                Text("t'y vois quelque chose là ?")
-                                    .font(.title.bold())
-                                    .foregroundColor(.white)
-                            }
-                            if isRightEyeClosed || isLeftEyeClosed {
-                                Text("merci pour le clin d'oeil 😉")
-                                    .font(.title.bold())
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    } else {
-                        Text("et oh, il y a quelqu'un ?")
-                            .font(.title.bold())
-                            .foregroundColor(.white)
-                    }
-                }
-            } else {
-                cameraView
-                    .cornerRadius(20)
-            }
-            HStack(spacing: 30) {
-                if captured {
-                    Button(action: {
-                        // send
-                    }) {
-                        HStack {
-                            Text("Envoyer")
-                                .textCase(.uppercase)
-                            Image(systemName: "arrowtriangle.right.fill")
-                        }
-                        .font(.title.bold())
-                        .foregroundColor(.primary)
-                    }
-                } else {
-                    Image(systemName: "bolt.slash.fill")
-                        .font(.title.bold())
-                    Button {
-                        cameraView.capture { front, back in
-                            frontCapturedImage = front
-                            backCaptureImage = back
-                            captured = true
-                            (isThereFace, isThereSmile, isLeftEyeClosed, isRightEyeClosed) = front.isThereFaceAndSmile()
-                        }
-                    } label: {
-                        Circle()
-                            .foregroundColor(Color(UIColor.systemBackground))
-                            .padding(8)
-                            .frame(width: 88, height: 88)
-                            .background(
-                                Circle()
-                                    .foregroundColor(.primary)
-                                    .frame(width: 80, height: 80)
-                            )
+                    VStack(spacing: 4) {
+                        Text("BeReal.").font(.title.bold())
+                        Text("\(Int(countDown / 60)):\(countDown % 60 < 10 ? "0" : "")\(Int(countDown % 60))")
+                            .font(.title3.bold())
                     }
 
-                    Button {
-                        cameraView.toggleCamera()
-                    } label: {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                            .font(.title.bold())
-                            .foregroundColor(.primary)
+                    HStack {
+                        Button(action: handleDismissTap) {
+                            Image(systemName: "chevron.down")
+                                .font(.body.bold())
+                                .foregroundColor(.white)
+                                .frame(width: 36, height: 36)
+                                .background(Circle().fill(Color.black))
+                                .overlay(Circle().stroke(Color.white.opacity(0.2), lineWidth: 1))
+                        }
+                        .frame(width: 72, alignment: .leading)
+
+                        Spacer()
+
+                        Color.clear
+                        .frame(width: 72, alignment: .trailing)
                     }
                 }
+                .frame(height: headerHeight, alignment: .top)
+                .padding(.horizontal)
+
+                Group {
+                    if captured, let front = frontCapturedImage, let back = backCaptureImage {
+                        DualPictureView(primaryImage: back, secondaryImage: front, fillsContainer: true)
+                            .frame(maxWidth: .infinity, alignment: .top)
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    } else {
+                        cameraView
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .top)
+                .frame(height: previewHeight, alignment: .top)
+                .clipped()
+
+                if captured {
+                    VStack(spacing: 6) {
+                        Text("Prêt à partager ?")
+                            .font(.title3.bold())
+                        if let feedbackMessage = faceInsights.feedbackMessage {
+                            Text(feedbackMessage)
+                                .font(.callout.weight(.medium))
+                                .foregroundColor(.white.opacity(0.85))
+                        }
+                        Text("Ton post sera partagé avec tes amis et les personnes qui te suivent.")
+                            .font(.footnote)
+                            .foregroundColor(.white.opacity(0.7))
+                    }
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .padding(.top, 2)
+                }
+
+                HStack(spacing: 30) {
+                    if captured {
+                        Button(action: resetCapture) {
+                            HStack {
+                                Image(systemName: "arrow.counterclockwise")
+                                Text("Reprendre")
+                            }
+                            .font(.headline.bold())
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 14)
+                            .background(Capsule().fill(Color.white.opacity(0.12)))
+                        }
+                        .disabled(uploadState == .uploading)
+
+                        Button(action: sendPost) {
+                            HStack {
+                                if uploadState == .uploading {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                }
+                                Text(uploadState == .uploading ? "Publication..." : "Envoyer")
+                                    .textCase(.uppercase)
+                                if uploadState == .idle {
+                                    Image(systemName: "arrowtriangle.right.fill")
+                                }
+                            }
+                            .font(.headline.bold())
+                            .foregroundColor(Color.black)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 14)
+                            .background(Capsule().fill(Color.white))
+                        }
+                        .disabled(uploadState == .uploading)
+                    } else {
+                        Image(systemName: "bolt.slash.fill")
+                            .font(.title.bold())
+                        Button {
+                            cameraView.capture { front, back in
+                                frontCapturedImage = front
+                                backCaptureImage = back
+                                captured = true
+                                faceInsights = front.detectFaceInsights()
+                            }
+                        } label: {
+                            Circle()
+                                .foregroundColor(Color(UIColor.systemBackground))
+                                .padding(8)
+                                .frame(width: 88, height: 88)
+                                .background(
+                                    Circle()
+                                        .foregroundColor(.primary)
+                                        .frame(width: 80, height: 80)
+                                )
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.white.opacity(0.20), lineWidth: 1)
+                                        .frame(width: 88, height: 88)
+                                )
+                        }
+
+                        Button {
+                            cameraView.toggleCamera()
+                        } label: {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                                .font(.title.bold())
+                                .foregroundColor(.primary)
+                        }
+                    }
+                }
+                .padding(.top, captured ? 8 : 20)
+                .padding(.bottom, captured ? 10 : 20)
+                .padding(.horizontal)
             }
-            .padding(.vertical, 20)
+            .padding(.top, 4)
+            .padding(.bottom, max(bottomInset, 10))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        }
+        .background(Color("Black").ignoresSafeArea())
+        .alert(isPresented: $showDiscardAlert) {
+            Alert(title: Text("Quitter la camera ?"),
+                  message: Text("La capture en cours sera perdue."),
+                  primaryButton: .destructive(Text("Quitter")) {
+                      closeView()
+                  },
+                  secondaryButton: .cancel(Text("Continuer la capture")))
+        }
+        .overlay {
+            if uploadState == .uploading {
+                ZStack {
+                    Color.black.opacity(0.45)
+                        .ignoresSafeArea()
+                    VStack(spacing: 12) {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(1.2)
+                        Text("Publication du BeReal...")
+                            .font(.headline.bold())
+                    }
+                    .padding(24)
+                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.black.opacity(0.75)))
+                }
+            }
         }
         .onReceive(timer) { _ in
             if countDown > 0 {
@@ -135,34 +214,56 @@ struct BeRealView: View {
             }
         }
     }
+
+    private func handleDismissTap() {
+        if captured {
+            resetCapture()
+        } else {
+            closeView()
+        }
+    }
+
+    private func resetCapture() {
+        guard uploadState == .idle else {
+            return
+        }
+
+        frontCapturedImage = nil
+        backCaptureImage = nil
+        captured = false
+        faceInsights = .empty
+    }
+
+    private func requestSendConfirmation() {
+        guard uploadState == .idle else {
+            return
+        }
+
+        showSendConfirmation = true
+    }
+
+    private func sendPost() {
+        guard uploadState == .idle,
+              let frontImage = frontCapturedImage,
+              let backImage = backCaptureImage else {
+            return
+        }
+
+        uploadState = .uploading
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            onSend(frontImage, backImage)
+            closeView()
+        }
+    }
+
+    private func closeView() {
+        presentationMode.wrappedValue.dismiss()
+    }
 }
 
 struct BeRealView_Previews: PreviewProvider {
     static var previews: some View {
         BeRealView()
     }
-}
-
-
-extension UIImage {
-
-    func isThereFaceAndSmile() -> (Bool, Bool, Bool, Bool) {
-        let ciImage = CIImage(cgImage: self.cgImage!)
-
-        let options: [String: Any] = [
-            CIDetectorAccuracy: CIDetectorAccuracyHigh,
-            CIDetectorSmile: true,
-            CIDetectorEyeBlink: true
-        ]
-        let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: options)!
-
-        let faces = faceDetector.features(in: ciImage, options: options)
-
-        if let face = faces.first as? CIFaceFeature {
-            return (true, face.hasSmile, face.leftEyeClosed, face.rightEyeClosed)
-        }
-        return (false, false, false, false)
-    }
-
-
 }
