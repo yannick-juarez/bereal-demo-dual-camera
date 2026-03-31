@@ -18,6 +18,9 @@
 		2751B71029041D2C00FE552B /* MyPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B70F29041D2C00FE552B /* MyPostView.swift */; };
 		2751B712290427CE00FE552B /* ShakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B711290427CE00FE552B /* ShakeManager.swift */; };
 		2751B7152904397200FE552B /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751B7142904397200FE552B /* FriendsView.swift */; };
+		2776565F2F7407A400A68A77 /* CTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776565E2F7407A400A68A77 /* CTA.swift */; };
+		277656612F7407B700A68A77 /* CTA+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277656602F7407B400A68A77 /* CTA+Samples.swift */; };
+		277656632F7408BA00A68A77 /* Post+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277656622F7408B500A68A77 /* Post+Helpers.swift */; };
 		27A9A0282907B3A800820367 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = 27A9A0272907B3A800820367 /* Focuser */; };
 		27A9A02A2907BF6000820367 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0292907BF6000820367 /* SegmentedControlView.swift */; };
 		27A9A02C2907C38900820367 /* BackgroundProtectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A02B2907C38900820367 /* BackgroundProtectionView.swift */; };
@@ -35,9 +38,12 @@
 		27A9A0452907E4B600820367 /* MovieRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A03F2907E4B600820367 /* MovieRecorder.swift */; };
 		27A9A0472907F03500820367 /* BeRealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A0462907F03500820367 /* BeRealView.swift */; };
 		27A9A04929080EF800820367 /* DualPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A04829080EF800820367 /* DualPictureView.swift */; };
+		27BA59AC2F73E14800253C41 /* Post+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA59AB2F73E14500253C41 /* Post+Samples.swift */; };
+		27BA59AE2F73E1D000253C41 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA59AD2F73E1CE00253C41 /* Profile.swift */; };
+		27BA59B02F73E1F400253C41 /* Profile+Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA59AF2F73E1F100253C41 /* Profile+Share.swift */; };
+		27BA59B52F73E2B100253C41 /* Profile+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA59B42F73E2AF00253C41 /* Profile+Samples.swift */; };
 		30B0A0013A1C100000000001 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1013A1C100000000001 /* AppSession.swift */; };
 		30B0A0023A1C100000000001 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1023A1C100000000001 /* Post.swift */; };
-		30B0A0033A1C100000000001 /* FeedMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1033A1C100000000001 /* FeedMockService.swift */; };
 		30B0A0043A1C100000000001 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1043A1C100000000001 /* CameraView.swift */; };
 		30B0A0053A1C100000000001 /* ImageFaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B0A1053A1C100000000001 /* ImageFaceDetection.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +61,9 @@
 		2751B70F29041D2C00FE552B /* MyPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostView.swift; sourceTree = "<group>"; };
 		2751B711290427CE00FE552B /* ShakeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeManager.swift; sourceTree = "<group>"; };
 		2751B7142904397200FE552B /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		2776565E2F7407A400A68A77 /* CTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTA.swift; sourceTree = "<group>"; };
+		277656602F7407B400A68A77 /* CTA+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CTA+Samples.swift"; sourceTree = "<group>"; };
+		277656622F7408B500A68A77 /* Post+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Helpers.swift"; sourceTree = "<group>"; };
 		27A9A0292907BF6000820367 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		27A9A02B2907C38900820367 /* BackgroundProtectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundProtectionView.swift; sourceTree = "<group>"; };
 		27A9A02D2907CFD900820367 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
@@ -71,9 +80,12 @@
 		27A9A03F2907E4B600820367 /* MovieRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRecorder.swift; sourceTree = "<group>"; };
 		27A9A0462907F03500820367 /* BeRealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeRealView.swift; sourceTree = "<group>"; };
 		27A9A04829080EF800820367 /* DualPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualPictureView.swift; sourceTree = "<group>"; };
+		27BA59AB2F73E14500253C41 /* Post+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Samples.swift"; sourceTree = "<group>"; };
+		27BA59AD2F73E1CE00253C41 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		27BA59AF2F73E1F100253C41 /* Profile+Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+Share.swift"; sourceTree = "<group>"; };
+		27BA59B42F73E2AF00253C41 /* Profile+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+Samples.swift"; sourceTree = "<group>"; };
 		30B0A1013A1C100000000001 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
 		30B0A1023A1C100000000001 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		30B0A1033A1C100000000001 /* FeedMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMockService.swift; sourceTree = "<group>"; };
 		30B0A1043A1C100000000001 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		30B0A1053A1C100000000001 /* ImageFaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFaceDetection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,9 +123,7 @@
 			children = (
 				2751B6F12904102800FE552B /* BeRealApp.swift */,
 				2751B6F32904102800FE552B /* ContentView.swift */,
-				30B0A2013A1C100000000001 /* App */,
 				30B0A2023A1C100000000001 /* Core */,
-				30B0A2053A1C100000000001 /* Features */,
 				2751B6FF2904104A00FE552B /* MainApp */,
 				2751B6F52904102A00FE552B /* Assets.xcassets */,
 				2751B6F72904102A00FE552B /* Preview Content */,
@@ -132,8 +142,9 @@
 		2751B6FF2904104A00FE552B /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
-				27A9A0392907E4A800820367 /* CameraManager */,
+				30B0A2053A1C100000000001 /* Features */,
 				2751B713290427D100FE552B /* Managers */,
+				27BA59B62F73EC4D00253C41 /* UI */,
 				2751B70829041AB200FE552B /* Views */,
 				2751B7002904105D00FE552B /* Navigation */,
 			);
@@ -159,12 +170,9 @@
 				27A9A04829080EF800820367 /* DualPictureView.swift */,
 				2751B70D29041AE900FE552B /* AvatarView.swift */,
 				2751B70F29041D2C00FE552B /* MyPostView.swift */,
-				27A9A0332907D02500820367 /* VisualEffectView.swift */,
-				27A9A0292907BF6000820367 /* SegmentedControlView.swift */,
-				27A9A02B2907C38900820367 /* BackgroundProtectionView.swift */,
 				27A9A02D2907CFD900820367 /* SearchField.swift */,
-				27A9A02F2907CFE300820367 /* ContactCell.swift */,
 				27A9A0352907D04A00820367 /* ShareMyProfileView.swift */,
+				27A9A02F2907CFE300820367 /* ContactCell.swift */,
 				27A9A0312907CFEB00820367 /* FriendCell.swift */,
 			);
 			path = Views;
@@ -173,9 +181,19 @@
 		2751B713290427D100FE552B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				27A9A0392907E4A800820367 /* CameraManager */,
 				2751B711290427CE00FE552B /* ShakeManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		2776565D2F74079F00A68A77 /* CTA */ = {
+			isa = PBXGroup;
+			children = (
+				277656602F7407B400A68A77 /* CTA+Samples.swift */,
+				2776565E2F7407A400A68A77 /* CTA.swift */,
+			);
+			path = CTA;
 			sourceTree = "<group>";
 		};
 		27A9A0392907E4A800820367 /* CameraManager */ = {
@@ -191,19 +209,41 @@
 			path = CameraManager;
 			sourceTree = "<group>";
 		};
-		30B0A2013A1C100000000001 /* App */ = {
+		27BA59B12F73E20200253C41 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				30B0A1013A1C100000000001 /* AppSession.swift */,
+				27BA59AD2F73E1CE00253C41 /* Profile.swift */,
+				27BA59AF2F73E1F100253C41 /* Profile+Share.swift */,
+				27BA59B42F73E2AF00253C41 /* Profile+Samples.swift */,
 			);
-			path = App;
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		27BA59B32F73E21200253C41 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				30B0A1023A1C100000000001 /* Post.swift */,
+				27BA59AB2F73E14500253C41 /* Post+Samples.swift */,
+				277656622F7408B500A68A77 /* Post+Helpers.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		27BA59B62F73EC4D00253C41 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				27A9A02B2907C38900820367 /* BackgroundProtectionView.swift */,
+				27A9A0292907BF6000820367 /* SegmentedControlView.swift */,
+				27A9A0332907D02500820367 /* VisualEffectView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		30B0A2023A1C100000000001 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				30B0A1013A1C100000000001 /* AppSession.swift */,
 				30B0A2033A1C100000000001 /* Models */,
-				30B0A2043A1C100000000001 /* Services */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -211,17 +251,11 @@
 		30B0A2033A1C100000000001 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				30B0A1023A1C100000000001 /* Post.swift */,
+				2776565D2F74079F00A68A77 /* CTA */,
+				27BA59B32F73E21200253C41 /* Post */,
+				27BA59B12F73E20200253C41 /* Profile */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		30B0A2043A1C100000000001 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				30B0A1033A1C100000000001 /* FeedMockService.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		30B0A2053A1C100000000001 /* Features */ = {
@@ -318,9 +352,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B0A0013A1C100000000001 /* AppSession.swift in Sources */,
+				277656632F7408BA00A68A77 /* Post+Helpers.swift in Sources */,
 				2751B6F42904102800FE552B /* ContentView.swift in Sources */,
 				30B0A0043A1C100000000001 /* CameraView.swift in Sources */,
-				30B0A0033A1C100000000001 /* FeedMockService.swift in Sources */,
 				30B0A0053A1C100000000001 /* ImageFaceDetection.swift in Sources */,
 				2751B712290427CE00FE552B /* ShakeManager.swift in Sources */,
 				30B0A0023A1C100000000001 /* Post.swift in Sources */,
@@ -328,6 +362,7 @@
 				27A9A0432907E4B600820367 /* PreviewView.swift in Sources */,
 				2751B71029041D2C00FE552B /* MyPostView.swift in Sources */,
 				27A9A0402907E4B600820367 /* PiPVideoMixer.swift in Sources */,
+				2776565F2F7407A400A68A77 /* CTA.swift in Sources */,
 				27A9A0302907CFE300820367 /* ContactCell.swift in Sources */,
 				2751B7152904397200FE552B /* FriendsView.swift in Sources */,
 				27A9A0342907D02500820367 /* VisualEffectView.swift in Sources */,
@@ -335,12 +370,17 @@
 				27A9A02C2907C38900820367 /* BackgroundProtectionView.swift in Sources */,
 				27A9A0362907D04A00820367 /* ShareMyProfileView.swift in Sources */,
 				27A9A0382907D76600820367 /* ProfileView.swift in Sources */,
+				27BA59AC2F73E14800253C41 /* Post+Samples.swift in Sources */,
 				27A9A0322907CFEB00820367 /* FriendCell.swift in Sources */,
 				27A9A02E2907CFD900820367 /* SearchField.swift in Sources */,
+				277656612F7407B700A68A77 /* CTA+Samples.swift in Sources */,
 				27A9A0422907E4B600820367 /* PiPMixer.metal in Sources */,
 				27A9A02A2907BF6000820367 /* SegmentedControlView.swift in Sources */,
 				27A9A0472907F03500820367 /* BeRealView.swift in Sources */,
+				27BA59B02F73E1F400253C41 /* Profile+Share.swift in Sources */,
 				27A9A0452907E4B600820367 /* MovieRecorder.swift in Sources */,
+				27BA59AE2F73E1D000253C41 /* Profile.swift in Sources */,
+				27BA59B52F73E2B100253C41 /* Profile+Samples.swift in Sources */,
 				2751B704290410FF00FE552B /* MainView.swift in Sources */,
 				27A9A04929080EF800820367 /* DualPictureView.swift in Sources */,
 				2751B6F22904102800FE552B /* BeRealApp.swift in Sources */,

@@ -8,6 +8,7 @@
 import SwiftUI
 
 private enum ActiveAlert: Identifiable {
+
     case timeToBeReal
 
     var id: Int {
@@ -51,7 +52,7 @@ struct ContentView: View {
             BeRealView { frontImage, backImage in
                 appSession.publish(frontImage: frontImage, backImage: backImage)
             }
-                .background(Color("Black"))
+            .background(Color("Black"))
         }
         .alert(item: $activeAlert) { alert in
             switch alert {
@@ -92,8 +93,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

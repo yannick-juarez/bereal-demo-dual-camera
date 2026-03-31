@@ -33,7 +33,7 @@ struct MyPostView: View {
                 .font(.system(size: 14, weight: .medium))
                 .foregroundColor(.gray)
             } else {
-                Image("post1")
+                Image("snap1")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 120, height: 150)

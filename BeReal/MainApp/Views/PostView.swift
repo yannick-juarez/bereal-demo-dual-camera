@@ -11,8 +11,55 @@ struct PostView: View {
 
     @State var post: Post
 
+    // MARK: Post Menu
+    @ViewBuilder
+    private func OptionsMenu() -> some View {
+        ZStack {
+            Menu {
+                Button {
+                    //
+                } label: {
+                    HStack {
+                        Text("Voir le profil")
+                        Spacer()
+                        Image(systemName: "person.circle")
+                    }
+                }
+                Button {
+                    //
+                } label: {
+                    HStack {
+                        Text("Partager le profil")
+                        Spacer()
+                        Image(systemName: "square.and.arrow.up")
+                    }
+                }
+                Menu {
+                    HStack {
+                        Text("Contenu indésirable")
+                    }
+                    HStack {
+                        Text("Contenu inapproprié")
+                    }
+                } label: {
+                    HStack {
+                        Text("Signaler")
+                        Spacer()
+                        Image(systemName: "exclamationmark.triangle")
+                    }
+                }
+                .foregroundColor(.red)
+            } label: {
+                Image(systemName: "ellipsis")
+                    .font(.title2)
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+
+    // MARK: - Body
     var body: some View {
-        VStack(spacing: 6) {
+        VStack(alignment: .leading, spacing: 6) {
             HStack {
                 AvatarView(imageName: post.profile.imageName)
                 VStack(alignment: .leading) {
@@ -23,51 +70,44 @@ struct PostView: View {
                         .foregroundColor(.gray)
                 }
                 Spacer()
-                ZStack {
-                    Menu {
-                        Button {
-                            //
-                        } label: {
-                            HStack {
-                                Text("Voir le profil")
-                                Spacer()
-                                Image(systemName: "person.circle")
-                            }
+                OptionsMenu()
+            }
+            .padding(.horizontal, 10)
+
+            ZStack(alignment: .bottom) {
+                if let primaryImage = UIImage(named: post.primaryImageName), let secondaryImage = UIImage(named: post.secondaryImageName) {
+                    DualPictureView(primaryImage: primaryImage, secondaryImage: secondaryImage)
+                } else {}
+                if let cta = post.cta {
+                    Link(destination: cta.url) {
+                        HStack {
+                            Text(cta.label)
+                                .font(.body.bold())
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(.primary.opacity(0.9))
                         }
-                        Button {
-                            //
-                        } label: {
-                            HStack {
-                                Text("Partager le profil")
-                                Spacer()
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                        }
-                        Menu {
-                            HStack {
-                                Text("Contenu indésirable")
-                            }
-                            HStack {
-                                Text("Contenu inapproprié")
-                            }
-                        } label: {
-                            HStack {
-                                Text("Signaler")
-                                Spacer()
-                                Image(systemName: "exclamationmark.triangle")
-                            }
-                        }
-                        .foregroundColor(.red)
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .font(.title2)
-                            .foregroundColor(.gray)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 12)
+                        .background(
+                            Capsule()
+                                .fill(Color.white)
+                        )
+                        .padding(8)
                     }
                 }
             }
-            .padding(.horizontal, 10)
-            DualPictureView(primaryImage: UIImage(named: post.primaryImageName)!,
-                            secondaryImage: UIImage(named: post.secondaryImageName)!)
+
+            if let caption = post.caption {
+
+                Text(caption)
+                    .font(.body.bold())
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.leading)
+                    .padding(.top, 4)
+            }
+
             NavigationLink(destination: Text("")) {
                 HStack {
                     Text("Ajouter un commentaire…")
@@ -82,8 +122,10 @@ struct PostView: View {
     }
 }
 
-struct PostView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostView(post: Post(primaryImageName: "post2", secondaryImageName: "marie", profile: Profile(imageName: "yaya", username: "yannickjuarez"), timeLabel: "2 min Late"))
-    }
+// MARK: - Previews
+#Preview {
+    PostView(post: .Samples.standard
+        .with(cta: CTA.Samples.explore)
+        .with(caption: "What a great day to be outside! #sunnyday")
+    )
 }

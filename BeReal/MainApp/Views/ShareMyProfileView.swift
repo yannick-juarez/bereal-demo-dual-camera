@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ShareMyProfileView: View {
+
+    private let currentUser: Profile = .Samples.yaya
+
     var body: some View {
         HStack {
-            AvatarView(imageName: "yaya", size: 35)
+            AvatarView(imageName: currentUser.imageName, size: 35)
             VStack(alignment: .leading) {
                 Text("Invite tes amis sur BeReal")
                     .font(.body.bold())
-                Text("bere.al/yannickjuarez")
+                Text(currentUser.shareURL())
                     .foregroundColor(.gray)
             }
             Spacer()
@@ -25,23 +28,20 @@ struct ShareMyProfileView: View {
                     .foregroundColor(.primary)
                     .font(.title3)
             }
-
         }
         .padding()
         .background(
             ZStack {
-                Image("yaya")
+                Image(currentUser.imageName)
                     .resizable()
                     .blur(radius: 20)
                 VisualEffectView(effect: UIBlurEffect(style: .systemThickMaterial))
             }
-                .cornerRadius(16)
+            .cornerRadius(16)
         )
     }
 }
 
-struct ShareMyProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShareMyProfileView()
-    }
+#Preview {
+    ShareMyProfileView()
 }

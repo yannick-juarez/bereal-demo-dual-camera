@@ -10,16 +10,20 @@ import SwiftUI
 struct MainView: View {
 
     @EnvironmentObject private var appSession: AppSession
+
     let onOpenCamera: () -> Void
+    private let currentUser: Profile = .Samples.yaya
 
     @State var showExplorer: Bool = false
     @State var showMenu: Bool = true
     @State var showFriends: Bool = false
     @State var showProfile: Bool = false
-    private let posts: [Post] = FeedMockService.friendsPosts
 
+    private let posts: [Post] = .samples
+
+    // MARK:  Header View
     @ViewBuilder
-    func HeaderView() -> some View {
+    private func HeaderView() -> some View {
         HStack {
             Image(systemName: "person.2.fill")
                 .onTapGesture {
@@ -30,7 +34,7 @@ struct MainView: View {
             Spacer()
             Text("BeReal.").font(.title.bold())
             Spacer()
-            AvatarView(imageName: "yaya")
+            AvatarView(imageName: currentUser.imageName)
                 .onTapGesture {
                     showProfile = true
                 }
@@ -41,11 +45,57 @@ struct MainView: View {
         }
     }
 
+    // MARK: Header Menu
     @ViewBuilder
-    func PostsView() -> some View {
-        GeometryReader { geometry in
-            let bottomInset = max(geometry.safeAreaInsets.bottom, 16)
+    private func HeaderMenu() -> some View {
+        HStack(spacing: 20) {
+            Button {
+                withAnimation {
+                    showExplorer = false
+                }
+            } label: {
+                Text("Mes amis")
+                    .font(.body.bold())
+                    .foregroundColor(showExplorer ? .gray : .primary)
+            }
+            Button {
+                withAnimation {
+                    showExplorer = true
+                }
+            } label: {
+                Text("Discovery")
+                    .font(.body.bold())
+                    .foregroundColor(showExplorer ? .primary : .gray)
+            }
+        }
+        .transition(.move(edge: .top))
+    }
 
+    // MARK: Camera Button
+    @ViewBuilder
+    private func CameraButton() -> some View {
+        Button(action: onOpenCamera) {
+            Image(systemName: "camera.fill")
+                .font(.headline.bold())
+                .foregroundColor(.black)
+                .padding(12)
+                .background(
+                    Capsule()
+                        .fill(Color.white.opacity(0.92))
+                )
+                .overlay(
+                    Capsule()
+                        .stroke(Color.black.opacity(0.12), lineWidth: 1)
+                )
+                .shadow(color: Color.white.opacity(0.22), radius: 20, y: 10)
+        }
+    }
+
+
+    // MARK: Posts View
+    @ViewBuilder
+    private func PostsView() -> some View {
+        GeometryReader { geometry in
             ZStack(alignment: .bottom) {
                 ScrollView {
                     VStack {
@@ -81,56 +131,24 @@ struct MainView: View {
                     }
                 }
                 .coordinateSpace(name: "scroll")
+
                 VStack {
                     HeaderView()
+
                     if showMenu {
-                        HStack(spacing: 20) {
-                            
-                            Button {
-                                withAnimation {
-                                    showExplorer = false
-                                }
-                            } label: {
-                                Text("Mes amis")
-                                    .font(.body.bold())
-                                    .foregroundColor(showExplorer ? .gray : .primary)
-                            }
-                            Button {
-                                withAnimation {
-                                    showExplorer = true
-                                }
-                            } label: {
-                                Text("Discovery")
-                                    .font(.body.bold())
-                                    .foregroundColor(showExplorer ? .primary : .gray)
-                            }
-                        }
-                        .transition(.move(edge: .top))
+                        HeaderMenu()
                     }
                     Spacer()
                 }
                 .padding(.horizontal)
 
-                Button(action: onOpenCamera) {
-                    Image(systemName: "camera.fill")
-                        .font(.headline.bold())
-                        .foregroundColor(.black)
-                        .padding(12)
-                        .background(
-                            Capsule()
-                                .fill(Color.white.opacity(0.92))
-                        )
-                        .overlay(
-                            Capsule()
-                                .stroke(Color.black.opacity(0.12), lineWidth: 1)
-                        )
-                        .shadow(color: Color.white.opacity(0.22), radius: 20, y: 10)
-                }
+                CameraButton()
             }
             .frame(maxWidth: .infinity)
         }
     }
 
+    // MARK: - Body
     var body: some View {
         VStack {
             if showFriends {
@@ -157,8 +175,7 @@ struct ViewOffsetKey: PreferenceKey {
 }
 
 #Preview {
-    MainView {
-    }
+    MainView(onOpenCamera: {})
         .environmentObject(AppSession())
         .preferredColorScheme(.dark)
 }

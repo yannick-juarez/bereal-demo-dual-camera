@@ -21,9 +21,7 @@ struct LoadingMainView: View {
     }
 }
 
-struct LoadingMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingMainView()
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    LoadingMainView()
+        .preferredColorScheme(.dark)
 }

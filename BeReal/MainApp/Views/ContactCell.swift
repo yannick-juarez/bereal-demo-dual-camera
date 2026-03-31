@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: Move JA to samples, use profile to fill the cell
 struct ContactCell: View {
 
     var body: some View {
@@ -61,8 +62,6 @@ struct ContactCell: View {
     }
 }
 
-struct ContactCell_Previews: PreviewProvider {
-    static var previews: some View {
-        ContactCell()
-    }
+#Preview {
+    ContactCell()
 }

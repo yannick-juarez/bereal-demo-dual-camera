@@ -49,8 +49,6 @@ struct SearchField: View {
     }
 }
 
-struct SearchField_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchField(text: .constant(""))
-    }
+#Preview {
+    SearchField(text: .constant(""))
 }

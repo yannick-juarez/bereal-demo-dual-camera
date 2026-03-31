@@ -15,11 +15,14 @@ struct DualPictureView: View {
     @State var invertImages: Bool = false
     @State var offset: CGSize = CGSize.zero
 
-    func SecondaryImage() -> Image {
+    // MARK: Secondary Image and View
+    @ViewBuilder
+    private func SecondaryImage() -> Image {
         invertImages ? Image(uiImage: primaryImage) : Image(uiImage: secondaryImage)
     }
 
-    func SecondaryView() -> some View {
+    @ViewBuilder
+    private func SecondaryView() -> some View {
         SecondaryImage()
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -32,10 +35,7 @@ struct DualPictureView: View {
             }
     }
 
-    func PrimaryImage() -> UIImage {
-        invertImages ? secondaryImage : primaryImage
-    }
-
+    // MARK: Picture content
     @ViewBuilder
     private func pictureContent(in size: CGSize) -> some View {
         ZStack(alignment: .topLeading) {
@@ -44,34 +44,13 @@ struct DualPictureView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: size.width, height: size.height)
 
-            if #available(iOS 15.0, *) {
-                SecondaryView()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(lineWidth: 2)
-                            .foregroundColor(.black)
-                    }
-                    .padding(12)
-                    .offset(x: offset.width, y: offset.height)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { gesture in
-                                offset = gesture.translation
-                            }
-                            .onEnded { _ in
-                                withAnimation {
-                                    offset = .zero
-                                }
-                            }
-                    )
-            } else {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 21)
+            SecondaryView()
+                .overlay {
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(lineWidth: 2)
                         .foregroundColor(.black)
-                        .frame(width: 123, height: 153)
-                    SecondaryView()
                 }
-                .padding(14)
+                .padding(12)
                 .offset(x: offset.width, y: offset.height)
                 .gesture(
                     DragGesture()
@@ -84,12 +63,12 @@ struct DualPictureView: View {
                             }
                         }
                 )
-            }
         }
         .frame(width: size.width, height: size.height, alignment: .topLeading)
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 
+    // MARK: - Body
     var body: some View {
         Group {
             if fillsContainer {
@@ -104,10 +83,22 @@ struct DualPictureView: View {
             }
         }
     }
+
+    // MARK: - Methods
+    private func PrimaryImage() -> UIImage {
+        invertImages ? secondaryImage : primaryImage
+    }
 }
 
-struct DualPictureView_Previews: PreviewProvider {
-    static var previews: some View {
-        DualPictureView(primaryImage: UIImage(named: "marie")!, secondaryImage: UIImage(named: "post2")!)
+// MARK: - Previews
+#Preview {
+    if let primary = UIImage(named: Post.Samples.standard.primaryImageName),
+       let secondary = UIImage(named: Post.Samples.standard.secondaryImageName) {
+        DualPictureView(primaryImage: primary,
+                        secondaryImage: secondary)
+    } else {
+        Text("Preview unavailable: one or more image assets may be missing.")
+            .foregroundStyle(.red)
+            .padding()
     }
 }
