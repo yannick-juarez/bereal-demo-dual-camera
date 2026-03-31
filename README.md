@@ -15,3 +15,8 @@ un mock-up SwiftUI navigation feed, amis, profil.
 - `Core/` — modèles et données mock
 - `Features/Camera/` — bridge UIKit/SwiftUI et logique de capture
 - `MainApp/` — écrans et composants UI
+
+
+## Démo
+
+[![Voir la démo vidéo](https://img.youtube.com/vi/lzcvh5qynCI/maxresdefault.jpg)](https://www.youtube.com/watch?v=lzcvh5qynCI)
