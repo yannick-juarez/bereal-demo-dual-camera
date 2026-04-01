@@ -526,16 +526,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 		sessionQueue.async {
 			self.session.startRunning()
 			self.isSessionRunning = self.session.isRunning
-			if !self.session.isRunning {
-				DispatchQueue.main.async {
-					let message = NSLocalizedString("Unable to resume", comment: "Alert message when unable to resume the session running")
-					let actions = [
-						UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"),
-									  style: .cancel,
-									  handler: nil)]
-					self.alert(title: Bundle.main.applicationName, message: message, actions: actions)
-				}
-			}
 		}
 	}
 	

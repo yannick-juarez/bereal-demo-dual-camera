@@ -11,7 +11,7 @@ extension Profile {
     class Samples {
         
         static let yaya: Profile = Profile(imageName: "yaya", username: "yannickjuarez")
-        static let marty: Profile = Profile(imageName: "marty", username: "lmart1n")
+        static let marty: Profile = Profile(imageName: "marty1", username: "lmart1n")
         static let antoine: Profile = Profile(imageName: "antoine", username: "antoinedupuich")
         static let manu: Profile = Profile(imageName: "devola-face", username: "emmanuel.nmr")
 
