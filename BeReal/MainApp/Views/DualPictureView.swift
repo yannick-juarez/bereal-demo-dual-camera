@@ -9,8 +9,8 @@ import SwiftUI
 
 struct DualPictureView: View {
 
-    @State var primaryImage: UIImage
-    @State var secondaryImage: UIImage
+    let primaryImage: UIImage
+    let secondaryImage: UIImage
     var fillsContainer: Bool = false
     @State var invertImages: Bool = false
     @State var offset: CGSize = CGSize.zero

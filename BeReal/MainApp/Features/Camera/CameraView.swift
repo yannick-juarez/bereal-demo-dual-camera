@@ -1,23 +1,28 @@
 import SwiftUI
 
-struct CameraView: UIViewControllerRepresentable {
-    
-    typealias UIViewControllerType = CameraViewController
+final class CameraControllerStore: ObservableObject {
 
-    let viewController = CameraViewController()
-
-    func makeUIViewController(context: Context) -> CameraViewController {
-        viewController
-    }
-
-    func updateUIViewController(_ uiViewController: CameraViewController, context: Context) {
-    }
+    let controller = CameraViewController()
 
     func toggleCamera() {
-        viewController.togglePiP()
+        controller.togglePiP()
     }
 
     func capture(_ completion: @escaping (UIImage, UIImage) -> Void) {
-        viewController.capture(completion)
+        controller.capture(completion)
+    }
+}
+
+struct CameraView: UIViewControllerRepresentable {
+
+    typealias UIViewControllerType = CameraViewController
+
+    let controller: CameraViewController
+
+    func makeUIViewController(context: Context) -> CameraViewController {
+        controller
+    }
+
+    func updateUIViewController(_ uiViewController: CameraViewController, context: Context) {
     }
 }

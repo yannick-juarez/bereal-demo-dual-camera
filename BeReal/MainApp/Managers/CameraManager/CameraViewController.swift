@@ -149,8 +149,12 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 	private var sessionRunningContext = 0
 	
 	private var keyValueObservations = [NSKeyValueObservation]()
+	private var hasRegisteredObservers = false
 	
 	private func addObservers() {
+		guard !hasRegisteredObservers else { return }
+		hasRegisteredObservers = true
+
 		let systemPressureStateObservation = observe(\.self.backCameraDeviceInput?.device.systemPressureState, options: .new) { _, change in
 			guard let systemPressureState = change.newValue as? AVCaptureDevice.SystemPressureState else { return }
 			self.setRecommendedFrameRateRangeForPressureState(systemPressureState)
@@ -184,11 +188,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 	}
 	
 	private func removeObservers() {
+		guard hasRegisteredObservers else { return }
+		hasRegisteredObservers = false
+
 		for keyValueObservation in keyValueObservations {
 			keyValueObservation.invalidate()
 		}
 		
 		keyValueObservations.removeAll()
+		NotificationCenter.default.removeObserver(self)
 	}
 	
 	// MARK: Video Preview PiP Management

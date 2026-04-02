@@ -18,7 +18,7 @@ struct BeRealView: View {
     let onSend: (UIImage, UIImage) -> Void
 
     @State var countDown: Int = 89
-    @State var cameraView = CameraView()
+    @StateObject private var cameraStore = CameraControllerStore()
     @State var captured: Bool = false
     @State private var uploadState: UploadState = .idle
     @State private var showDiscardAlert: Bool = false
@@ -114,7 +114,7 @@ struct BeRealView: View {
             Image(systemName: "bolt.slash.fill")
                 .font(.title.bold())
             Button {
-                cameraView.capture { front, back in
+                cameraStore.capture { front, back in
                     frontCapturedImage = front
                     backCaptureImage = back
                     captured = true
@@ -138,7 +138,7 @@ struct BeRealView: View {
             }
 
             Button {
-                cameraView.toggleCamera()
+                cameraStore.toggleCamera()
             } label: {
                 Image(systemName: "arrow.triangle.2.circlepath")
                     .font(.title.bold())
@@ -199,7 +199,7 @@ struct BeRealView: View {
                                 .frame(maxWidth: .infinity, alignment: .top)
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                         } else {
-                            cameraView
+                            CameraView(controller: cameraStore.controller)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                         }

@@ -155,7 +155,7 @@ struct MainView: View {
                 FriendsView(showFriends: $showFriends)
                 .transition(.move(edge: .leading))
             } else {
-                NavigationView() {
+                NavigationView {
                     PostsView()
                 }
                 .navigationBarHidden(true)

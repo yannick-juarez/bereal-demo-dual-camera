@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PostView: View {
 
-    @State var post: Post
+    let post: Post
 
     // MARK: Post Menu
     @ViewBuilder
